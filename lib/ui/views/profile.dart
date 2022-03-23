@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:furniture_shopping/ui/views/orders.dart';
+import 'package:furniture_shopping/ui/views/payment.dart';
+import 'package:furniture_shopping/ui/views/reviews.dart';
+import 'package:furniture_shopping/ui/views/shippingaddress.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
@@ -22,26 +25,35 @@ class Profile extends StatelessWidget {
           SizedBox(height: 18),
           buildProfil("assets/images/profilPicture.png", "Bruno Pham",
               "bruno203@gmail.com"),
-          SizedBox(height: 30),
+          const SizedBox(height: 30),
           Expanded(
             child: ListView(
               addAutomaticKeepAlives: true,
               padding: EdgeInsets.all(20),
               children: [
                 GestureDetector(
-                    onTap: () => Get.to(() => Orders()),
+                  onTap: () => Get.to(() => Orders()),
                   child: buildList("My orders", "Already have 10 orders",
                       "assets/images/nextblack.png"),
                 ),
                 SizedBox(height: 15),
-                buildList("Shipping Addresses", "03 Addresses",
-                    "assets/images/nextblack.png"),
+                GestureDetector(
+                  onTap: () => Get.to(() => ShippingAddress()),
+                  child: buildList("Shipping Addresses", "03 Addresses",
+                      "assets/images/nextblack.png"),
+                ),
                 SizedBox(height: 15),
-                buildList("Payment Method", "You have 2 cards",
-                    "assets/images/nextblack.png"),
+                GestureDetector(
+                  onTap: () => Get.to(() => Payment()),
+                  child: buildList("Payment Method", "You have 2 cards",
+                      "assets/images/nextblack.png"),
+                ),
                 SizedBox(height: 15),
-                buildList("My reviews", "Reviews for 5 items",
-                    "assets/images/nextblack.png"),
+                GestureDetector(
+                  onTap: () => Get.to(() => Reviews()),
+                  child: buildList("My reviews", "Reviews for 5 items",
+                      "assets/images/nextblack.png"),
+                ),
                 SizedBox(height: 15),
                 buildList("Setting", "Notification, Password, FAQ, Contact",
                     "assets/images/nextblack.png"),
@@ -49,19 +61,19 @@ class Profile extends StatelessWidget {
             ),
           ),
           Row(
-              children: [
-                GestureDetector(
-                    onTap: () => Get.to(() => Home()),
-                    child: navigationBar("assets/images/bar1.png")),
-                GestureDetector(
-                    onTap: () => Get.to(() => Favorite()),
-                    child: navigationBar("assets/images/bar2.png")),
-                navigationBar("assets/images/bar3.png"),
-                GestureDetector(
-                    onTap: () => Get.to(() => Profile()),
-                    child: navigationBar("assets/images/bar4.png")),
-              ],
-            ),
+            children: [
+              GestureDetector(
+                  onTap: () => Get.to(() => Home()),
+                  child: navigationBar("assets/images/bar1.png")),
+              GestureDetector(
+                  onTap: () => Get.to(() => Favorite()),
+                  child: navigationBar("assets/images/bar2.png")),
+              navigationBar("assets/images/bar3.png"),
+              GestureDetector(
+                  onTap: () => Get.to(() => Profile()),
+                  child: navigationBar("assets/images/bar4.png")),
+            ],
+          ),
         ],
       ),
     );
@@ -110,7 +122,7 @@ Widget buildProfil(String photoUrl, String name, String email) {
   );
 }
 
-Widget buildList(String title, String description, String photoUrl ) {
+Widget buildList(String title, String description, String photoUrl) {
   return Container(
     width: 360,
     height: 80,
